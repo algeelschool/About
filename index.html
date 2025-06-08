@@ -389,47 +389,54 @@
             </div>
             
             <div class="bg-white p-8 rounded-lg shadow-xl">
-                <form class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="fullname" class="block text-sm font-medium text-gray-700 mb-1">الاسم بالكامل</label>
-                            <input type="text" id="fullname" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="الاسم كاملاً">
-                        </div>
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">رقم الهاتف</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: 01151209045">
-                        </div>
-                    </div>
+                <!-- Form using Tailwind -->
+               <form class="space-y-6" action="https://formspree.io/f/xwpbvgnz" method="POST" class="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md space-y-4">
+                <DIv class="grid md:grid-cols-2 gap-6">
+                    <div >
+                        <label class="block text-gray-700 font-bold">الاسم بالكامل</label>
+                        <input type="text" name="الاسم" required class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                     </div>
+
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">البريد الإلكتروني</label>
-                        <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500" placeholder="مثال: example@gmail.com">
+                        <label class="block text-gray-700 font-bold">رقم الجوال</label>
+                        <input type="tel" name="رقم الجوال" required class="w-full mt-1 p-2 border border-gray-300 rounded-md">
                     </div>
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="stage" class="block text-sm font-medium text-gray-700 mb-1">المرحلة الدراسية</label>
-                            <select id="stage" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
-                                <option value="" disabled selected>اختر المرحلة</option>
-                                <option value="primary">المرحلة الابتدائية</option>
-                                <option value="intermediate">المرحلة المتوسطة</option>
-                                <option value="secondary">المرحلة الثانوية</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="grade" class="block text-sm font-medium text-gray-700 mb-1">الصف الدراسي</label>
-                            <select id="grade" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
-                                <option value="" disabled selected>اختر الصف</option>
-                            </select>
-                        </div>
-                    </div>
+                </DIv>
+
+                <div>
+                     <label class="block text-gray-700 font-bold">البريد الإلكتروني</label>
+                     <input type="email" name="البريد الإلكتروني" required class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 font-medium">
-                            إتمام التسجيل والدفع <i class="fas fa-arrow-left ml-2"></i>
-                        </button>
+                         <label class="block text-gray-700 font-bold">المرحلة الدراسية</label>
+                        <select id="grade" name="المرحلة الدراسية" required class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                            <option value="">اختر المرحلة</option>
+                            <option value="الابتدائية">الابتدائية</option>
+                            <option value="المتوسطة">المتوسطة</option>
+                            <option value="الثانوية">الثانوية</option>
+                        </select>
                     </div>
-                    <p class="text-center text-gray-500 text-sm">
-                        بالضغط على الزر أنت توافق على <a href="#" class="text-blue-600 hover:underline">شروط وأحكام المدرسة</a>
-                    </p>
-                </form>
+
+                    <div>
+                        <label class="block text-gray-700 font-bold">الصف الدراسي</label>
+                        <select id="class" name="الصف الدراسي" required class="w-full mt-1 p-2 border border-gray-300 rounded-md">
+                            <option value="">اختر الصف</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 font-medium">
+                        إتمام التسجيل والدفع <i class="fas fa-arrow-left ml-2"></i>
+                    </button>
+                </div>
+                <p class="text-center text-gray-500 text-sm">
+                    بالضغط على الزر أنت توافق على <a href="#" class="text-blue-600 hover:underline">شروط وأحكام المدرسة</a>
+                </p>
+             </form>
+
+
             </div>
         </div>
     </section>
@@ -500,28 +507,31 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Dynamic grade selection based on stage
-        const stageSelect = document.getElementById('stage');
-        const gradeSelect = document.getElementById('grade');
-        
-        const gradesByStage = {
-            primary: ['الصف الأول', 'الصف الثاني', 'الصف الثالث', 'الصف الرابع', 'الصف الخامس', 'الصف السادس'],
-            intermediate: ['الصف السابع', 'الصف الثامن', 'الصف التاسع'],
-            secondary: ['الصف الأول الثانوي', 'الصف الثاني الثانوي', 'الصف الثالث الثانوي']
+       // Script for dynamic class update 
+
+        const gradeSelect = document.getElementById("grade");
+        const classSelect = document.getElementById("class");
+
+        const classesByGrade = {
+          "الابتدائية": ["الأول", "الثاني", "الثالث", "الرابع", "الخامس", "السادس"],
+          "المتوسطة": ["الأول متوسط", "الثاني متوسط", "الثالث متوسط"],
+          "الثانوية": ["الأول ثانوي", "الثاني ثانوي", "الثالث ثانوي"]
         };
-        
-        stageSelect.addEventListener('change', function() {
-            const selectedStage = this.value;
-            gradeSelect.innerHTML = '<option value="" disabled selected>اختر الصف</option>';
-            
-            if (selectedStage && gradesByStage[selectedStage]) {
-                gradesByStage[selectedStage].forEach(grade => {
-                    const option = document.createElement('option');
-                    option.value = grade;
-                    option.textContent = grade;
-                    gradeSelect.appendChild(option);
-                });
-            }
+
+        gradeSelect.addEventListener("change", function () {
+          const selectedGrade = this.value;
+          const classes = classesByGrade[selectedGrade] || [];
+ 
+          // Clear current options
+          classSelect.innerHTML = '<option value="">اختر الصف</option>';
+
+          // Add new options
+          classes.forEach(cls => {
+            const option = document.createElement("option");
+            option.value = cls;
+            option.textContent = cls;
+            classSelect.appendChild(option);
+          });
         });
     </script>
 </body>
